@@ -1,6 +1,7 @@
 # create docker container detached  with centos version 7 using -it on created network with bash
 sudo docker container run -d -it --name my_centos --network my_app_net centos:7 bash 
-# or run to delete after exit with --rm 
+
+# or run to delete after exit with --rm
 sudo docker run --rm -it centos:7 bash
 
 # enter command line in container environment
