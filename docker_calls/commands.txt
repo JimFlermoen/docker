@@ -1,0 +1,33 @@
+docker container pull httpd:2.4 (optional)
+
+docker container build -t my_apache_image .
+
+docker network create my_network
+
+docker container run -dit --name my_apache_container -p 8080:80 -v my_apache_volume:/usr/local/apache2/logs --network my_network my_apache_image
+
+docker container ls -a  (shows containers that are running and those have stopped)
+
+docker images  (Shows local images)
+
+docker volume ls  (Shows local Volumes)
+
+docker network ls  (Shows a list of the networks)
+
+docker inspect <The-Network-Name>
+
+docker stats <containerId>  (gives you live resource usage)
+
+docker rename <containerID> <newcontainerId>  (renames container)
+
+docker exec -it <container name or Id> sh (CLI in container)
+
+apachectl -l  (Lists the compiled modules)
+
+apachectl -s  (Lists configured virtual hosts)
+
+apachectl configtest (simple command to check for Apache syntax issues)
+
+
+
+
