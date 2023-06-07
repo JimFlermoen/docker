@@ -1,0 +1,31 @@
+version: "3"
+services:
+  wordpress:
+    image: wordpress
+    ports:
+      - 8080:80
+    depends_on:
+      - mysql
+    environment:
+      WORDPRESS_DB_HOST: mysql
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: "mypasswd"
+      WORDPRESS_DB_NAME: "wordpress"
+    deploy:
+      replicas: 3
+    networks:
+      frontend:
+  mysql:
+    image: mysql
+    environment:
+       MYSQL_DATABASE: wordpress
+       MYSQL_ROOT_PASSWORD: "mypasswd"
+    volumes:
+      - ./mysql:/var/lib/mysql
+    networks:
+      backend:
+networks:
+  backend:
+    driver: overlay
+  frontend:
+    driver: overlay
